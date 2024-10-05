@@ -11,6 +11,7 @@
   "dependencies": {
     "@heroicons/react": "^1.0.6",
     "@neondatabase/serverless": "^0.9.4",
+    "@react-oauth/google": "^0.12.1",
     "bcrypt": "^5.1.1",
     "date-fns": "^3.6.0",
     "link": "^2.1.1",
