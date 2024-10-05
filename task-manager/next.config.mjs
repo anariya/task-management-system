@@ -5,15 +5,16 @@ export default {
     async headers() {
       return [
         {
-          // Match all routes
+          // Apply these headers to all routes
           source: '/(.*)',
           headers: [
             {
               key: 'Content-Security-Policy',
-              value: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://accounts.google.com; object-src 'none';",
+              value: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://accounts.google.com https://static.cloudflareinsights.com; object-src 'none';",
             },
           ],
         },
       ];
     },
   };
+  
