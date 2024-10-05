@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+button {
+    background-color: #5FA6EC;
+    text-align: center;
+    margin: 1rem;
+    cursor: pointer;
+    line-height: 1.2;
+    border-radius: 2em;
+    padding: 5px;
+}
+
+button:hover{
+    background-color: #4274A5 ;
+}

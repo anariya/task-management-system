@@ -1,0 +1,29 @@
+{
+  "tasks": [
+    {
+      "title": "Complete project report",
+      "startDate": "2024-08-25",
+      "endDate": "2024-09-02"
+    },
+    {
+      "title": "Team meeting",
+      "startDate": "2024-08-28",
+      "endDate": "2024-08-28"
+    },
+    {
+      "title": "Design new feature",
+      "startDate": "2024-08-29",
+      "endDate": "2024-09-05"
+    },
+    {
+      "title": "Code review",
+      "startDate": "2024-09-03",
+      "endDate": "2024-09-10"
+    },
+    {
+      "title": "Update documentation",
+      "startDate": "2024-09-05",
+      "endDate": "2024-09-07"
+    }
+  ]
+}
