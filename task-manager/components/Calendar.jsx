@@ -617,7 +617,7 @@ const Calendar = ({ groupID }) => {
   };
 
   const getGcalTokens = async (code) => {
-    const res = await fetch("api/create-tokens", {
+    const res = await fetch("api/gcal/create-tokens", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
