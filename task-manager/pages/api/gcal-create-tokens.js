@@ -13,7 +13,7 @@ const oauth2Client = new google.auth.OAuth2(
 
 const router = createRouter();
 
-router.post("/create-tokens", async (req, res) => {
+router.post(async (req, res) => {
   const { code } = req.body.code;
   const token = await oauth2Client.getToken(code);
   res.json(token);
