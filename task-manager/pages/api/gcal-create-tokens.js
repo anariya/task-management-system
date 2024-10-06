@@ -14,9 +14,14 @@ const oauth2Client = new google.auth.OAuth2(
 const router = createRouter();
 
 router.post(async (req, res) => {
-  const { code } = req.body;
-  const token = await oauth2Client.getToken(code);
-  res.json(token);
+  try {
+    const { code } = req.body;
+    const token = await oauth2Client.getToken(code);
+    res.json(token);
+  } catch (error) {
+    console.log(`oauth token error ${error}`);
+    res.status(500).json({error: `failed`});
+  }
 });
 
 export default router.handler();
