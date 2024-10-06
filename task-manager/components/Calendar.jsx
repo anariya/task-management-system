@@ -612,6 +612,21 @@ const Calendar = ({ groupID }) => {
   const onGcalSuccess = (res) => {
     console.log("success");
     console.log(res);
+    getGcalTokens(code);
+  };
+
+  const getGcalTokens = async (code) => {
+    const res = await fetch("api/create-tokens", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        code: code
+      })
+    });
+    const data = await res.json();
+    console.log(data);
   };
 
   const onGcalFailure = (res) => {
