@@ -164,7 +164,9 @@ const Calendar = ({groupID}) => {
       console.log(new Date(new Date(event["start_date"]).getTime() - timezoneOffset).toISOString());
       console.log(new Date(new Date(event["end_date"]).getTime() - timezoneOffset).toISOString());
       console.log(event["start_date"]);
+      console.log(new Date(event["start_date"]).getTime())
       console.log(event["end_date"]);
+      console.log(new Date(event["start_date"]).getTime())
 
 
       setStartDateInput(new Date(new Date(event["start_date"]).getTime() - timezoneOffset).toISOString().split("T")[0]);
