@@ -169,9 +169,9 @@ const Calendar = ({groupID}) => {
       console.log(new Date(event["start_date"]).getTime())
 
 
-      setStartDateInput(new Date(new Date(event["start_date"]).getTime() - timezoneOffset).toISOString().split("T")[0]);
+      setStartDateInput(new Date(new Date(event["start_date"]).getTime()).toISOString().split("T")[0]);
       // setStartTimeInput(new Date(new Date(event["start_date"]).getTime() - timezoneOffset).toISOString().split("T")[1]);
-      setEndDateInput(new Date(new Date(event["end_date"]).getTime() - timezoneOffset).toISOString().split("T")[0]);
+      setEndDateInput(new Date(new Date(event["end_date"]).getTime()).toISOString().split("T")[0]);
       // setEndTimeInput(new Date(new Date(event["end_date"]).getTime() - timezoneOffset).toISOString().split("T")[1]);
 
       // setStartDateInput(new Date(event["start_date"]).toISOString().split("T")[0]);
@@ -446,8 +446,8 @@ const Calendar = ({groupID}) => {
     return events
       .filter(event => {
         const timezoneOffset = new Date().getTimezoneOffset() * 60000;
-        const startDate = new Date(new Date(event["start_date"]).getTime() - timezoneOffset)
-        const endDate = new Date(new Date(event["end_date"]).getTime() - timezoneOffset)
+        const startDate = new Date(new Date(event["start_date"]).getTime())
+        const endDate = new Date(new Date(event["end_date"]).getTime())
         
         // Compare the date portion of the event's start and end with the currentDate
         const isSameDayStart = startDate.getUTCFullYear() === currentDateObj.getUTCFullYear() &&
