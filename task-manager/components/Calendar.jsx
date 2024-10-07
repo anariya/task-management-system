@@ -439,6 +439,7 @@ const Calendar = ({groupID}) => {
     return events
       .filter(event => {
         const timezoneOffset = new Date().getTimezoneOffset() * 60000;
+        console.log(`Timezone offset: ${timezoneOffset}`);
         const startDate = new Date(new Date(event["start_date"]).getTime() - timezoneOffset)
         const endDate = new Date(new Date(event["end_date"]).getTime() - timezoneOffset)
         
