@@ -157,6 +157,9 @@ const Calendar = ({groupID}) => {
       setNewEvent(tmpEvent);
 
       const timezoneOffset = new Date().getTimezoneOffset() * 60000;
+      
+
+      console.log(`Timezone offset: ${timezoneOffset}`);
 
       console.log(new Date(new Date(event["start_date"]).getTime() - timezoneOffset).toISOString());
       console.log(new Date(new Date(event["end_date"]).getTime() - timezoneOffset).toISOString());
@@ -435,9 +438,6 @@ const Calendar = ({groupID}) => {
     // Convert currentDate to a Date object for comparison
     const currentDateObj = new Date(currentDate);
     console.log(currentDateObj);
-
-    const timezoneOffset = new Date().getTimezoneOffset() * 60000;
-    console.log(`Timezone offset: ${timezoneOffset}`);
 
     return events
       .filter(event => {
