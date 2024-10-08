@@ -159,7 +159,7 @@ const Calendar = ({groupID}) => {
 
       const timezoneOffset = new Date().getTimezoneOffset() * 60000;
       
-
+      console.log(calendarDays);
       console.log(`Timezone offset: ${timezoneOffset}`);
 
       console.log(new Date(new Date(event["start_date"]).getTime() - timezoneOffset).toISOString());
