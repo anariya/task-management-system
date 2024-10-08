@@ -503,9 +503,9 @@ const Calendar = ({groupID}) => {
       const eventStartDate = new Date(event.start_date);
   
       return (
-        eventStartDate.getUTCDate() === day.getDate() &&
-        eventStartDate.getUTCMonth() === day.getMonth() &&
-        eventStartDate.getUTCFullYear() === day.getFullYear()
+        eventStartDate.getUTCDate() === day.getUTCDate() &&
+        eventStartDate.getUTCMonth() === day.getUTCMonth() &&
+        eventStartDate.getUTCFullYear() === day.getUTCFullYear()
       );
     });
 
