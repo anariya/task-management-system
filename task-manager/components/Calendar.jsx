@@ -418,9 +418,9 @@ const Calendar = ({groupID}) => {
       .filter(
         (event) =>
           isAllDayEvent(event) &&
-          event.start.getDate() === day.getDate() &&
-          event.start.getMonth() === day.getMonth() &&
-          event.start.getFullYear() === day.getFullYear()
+          event.start.getUTCDate() === day.getDate() &&
+          event.start.getUTCMonth() === day.getMonth() &&
+          event.start.getUTCFullYear() === day.getFullYear()
       )
       .map((event, index) => (
         <div key={index} className={styles["all-day-event-block"]}>
@@ -471,10 +471,10 @@ const Calendar = ({groupID}) => {
         const startDate = new Date(event.start_date);
         const endDate = new Date(event.end_date);
   
-        const startHour = startDate.getHours();
-        const startMinutes = startDate.getMinutes();
-        const endHour = endDate.getHours();
-        const endMinutes = endDate.getMinutes();
+        const startHour = startDate.getUTCHours();
+        const startMinutes = startDate.getUTCMinutes();
+        const endHour = endDate.getUTCHours();
+        const endMinutes = endDate.getUTCMinutes();
   
         // Calculate the top position and height of the event block
         const topPosition = 25 + startHour * 50 + (startMinutes / 60) * 50; // 50px per hour
@@ -503,9 +503,9 @@ const Calendar = ({groupID}) => {
       const eventStartDate = new Date(event.start_date);
   
       return (
-        eventStartDate.getDate() === day.getDate() &&
-        eventStartDate.getMonth() === day.getMonth() &&
-        eventStartDate.getFullYear() === day.getFullYear()
+        eventStartDate.getUTCDate() === day.getDate() &&
+        eventStartDate.getUTCMonth() === day.getMonth() &&
+        eventStartDate.getUTCFullYear() === day.getFullYear()
       );
     });
 
@@ -514,10 +514,10 @@ const Calendar = ({groupID}) => {
       .map((event, index) => {
         const startDate = new Date(event.start_date);
         const endDate = new Date(event.end_date);
-        const startHour = startDate.getHours();
-        const startMinutes = startDate.getMinutes();
-        const endHour = endDate.getHours();
-        const endMinutes = endDate.getMinutes();
+        const startHour = startDate.getUTCHours();
+        const startMinutes = startDate.getUTCMinutes();
+        const endHour = endDate.getUTCHours();
+        const endMinutes = endDate.getUTCMinutes();
 
         // Calculate the top position and height of the event block
         const topPosition = 30 + startHour * 50 + (startMinutes / 60) * 50; // 50px per hour
