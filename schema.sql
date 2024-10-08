@@ -59,8 +59,8 @@ CREATE TABLE Event (
     event_id SERIAL PRIMARY KEY,
     group_id INT,
     name VARCHAR(255),
-    start_date TIMESTAMP,
-    end_date TIMESTAMP,
+    start_date DATETIME,
+    end_date DATETIME,
     location VARCHAR(255),
     FOREIGN KEY (group_id) REFERENCES Groups(group_id) ON DELETE CASCADE
 );

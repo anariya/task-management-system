@@ -57,6 +57,7 @@ const Calendar = ({groupID}) => {
       const response = await fetch(`/api/calendar?groupId=${groupID}`);
       const data = await response.json();
       setEvents(data);
+      console.log(JSON.stringify(events));
     } catch (error) {
       console.error('Error fetching events:', error);
     }
@@ -446,8 +447,10 @@ const Calendar = ({groupID}) => {
     return events
       .filter(event => {
         const timezoneOffset = new Date().getTimezoneOffset() * 60000;
-        const startDate = new Date(new Date(event["start_date"]).getTime())
-        const endDate = new Date(new Date(event["end_date"]).getTime())
+        // const startDate = new Date(new Date(event["start_date"]).getTime())
+        // const endDate = new Date(new Date(event["end_date"]).getTime())
+        const startDate = new Date(event["start_date"]);
+        const endDate = new Date(event["end_date"]);
         
         // Compare the date portion of the event's start and end with the currentDate
         const isSameDayStart = startDate.getUTCFullYear() === currentDateObj.getUTCFullYear() &&
