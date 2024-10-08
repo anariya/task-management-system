@@ -57,7 +57,7 @@ const Calendar = ({groupID}) => {
       const response = await fetch(`/api/calendar?groupId=${groupID}`);
       const data = await response.json();
       setEvents(data);
-      console.log(JSON.stringify(events));
+      console.log(JSON.stringify(data));
     } catch (error) {
       console.error('Error fetching events:', error);
     }
