@@ -21,6 +21,11 @@ export default function EditGroupForm({ group, currentUserID, onSubmit }) {
       setUsers(newUsers);
       setAddUserName("");
     }
+    console.log(JSON.stringify(group.users));
+    console.log(currentUserID);
+    console.log(JSON.stringify(group.users
+      .filter((user) => user.id !== currentUserID)
+      .map((user) => [user.username, user.role])));
     e.preventDefault();
   };
 
@@ -68,7 +73,7 @@ export default function EditGroupForm({ group, currentUserID, onSubmit }) {
           {/* should probably be scrollable inside */}
           {users && users.length > 0 ? (
             users.map((user) => (
-              <div class="grid gap-1 grid-cols-4 grid-rows-1 items-center">
+              <div className="grid gap-1 grid-cols-4 grid-rows-1 items-center">
                 <p className="mt-1.5">{user[0]}</p>
                 <select data-username={user[0]} onChange={handleRoleChange} className="h-8 rounded-lg mt-1.5 px-2.5">
                   <option value="member" selected={user[1] === "MEMBER"}>

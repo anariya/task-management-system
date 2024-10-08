@@ -31,7 +31,7 @@ export default function Home() {
     }, [signedIn]); */
 
     useEffect(() => {
-        const storedUserId = sessionStorage.getItem('userId');
+        const storedUserId = Number(sessionStorage.getItem('userId'));
         const storedUsername = sessionStorage.getItem('username');
         console.log(storedUserId)
         if (storedUserId && storedUsername) {

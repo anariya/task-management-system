@@ -63,6 +63,7 @@ export default function GroupMenu({ userID, onGroupSelect }) {
   };
 
   const onEditGroup = (e) => {
+    console.log(userID);
     setGroupToEdit(groups.find(group => Number(group.id) === Number(e.target.dataset.groupid)));
     setShowEditGroupForm(true);
   };
