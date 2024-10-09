@@ -626,6 +626,8 @@ const Calendar = ({ groupID }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        events: events,
+        groupId: groupID,
         code: code,
       }),
     });
@@ -720,7 +722,7 @@ const Calendar = ({ groupID }) => {
         </div>
 
         <div className={styles["calendar-controls"]}>
-          <button onClick={handleGcalLogin}>Authorise Google Calendar</button>
+          <button onClick={handleGcalLogin}>Sync With Google Calendar</button>
           <div className={styles["prev-next-group"]}>
             <button
               className={styles["prev-next-button"]}
