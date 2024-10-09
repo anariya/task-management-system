@@ -21,7 +21,7 @@ import {
 } from "date-fns";
 import styles from "../styles/Calendar.module.css";
 import GoogleCalendarSync from "./GoogleCalendarSync";
-import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import { useGoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 
 const Calendar = ({ groupID }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -605,16 +605,19 @@ const Calendar = ({ groupID }) => {
       });
   };
 
-  const handleGoogleCalendar = (e) => {
-    setShowSyncForm(true);
-  };
-
-  const onGcalSuccess = (res) => {
-    console.log("success");
-    console.log(res);
-    const { code } = res;
-    getGcalTokens(code);
-  };
+  const handleGcalLogin = useGoogleLogin({
+    flow: "auth-code",
+    onSuccess: async (res) => {
+      console.log("success");
+      console.log(res);
+      const { code } = res;
+      await getGcalTokens(code);
+    },
+    onError: (error) => {
+      console.error(`Login failed: ${error}`);
+    },
+    scope: "openid email profile https://www.googleapis.com/auth/calendar",
+  });
 
   const getGcalTokens = async (code) => {
     const res = await fetch("api/gcal-create-tokens", {
@@ -628,11 +631,6 @@ const Calendar = ({ groupID }) => {
     });
     const data = await res.json();
     console.log(data);
-  };
-
-  const onGcalFailure = (res) => {
-    console.log("failure");
-    console.log(res);
   };
 
   // Calculate the red line position
@@ -723,17 +721,7 @@ const Calendar = ({ groupID }) => {
 
         <div className={styles["calendar-controls"]}>
           <GoogleOAuthProvider clientId="350480669789-ihtcgbfgtj619sgc5vna4nrt33ptq3ta.apps.googleusercontent.com">
-            <GoogleLogin
-              clientId="350480669789-ihtcgbfgtj619sgc5vna4nrt33ptq3ta.apps.googleusercontent.com"
-              buttonText="Authorise Google Calendar"
-              onSuccess={onGcalSuccess}
-              onFailure={onGcalFailure}
-              cookiePolicy={"single-host-origin"}
-              responseType="code"
-              accessType="offline"
-              flow="auth-code"
-              scope="openid email profile https://www.googleapis.com/auth/calendar"
-            />
+            <button onClick={handleGcalLogin}>Authorise Google Calendar</button>
           </GoogleOAuthProvider>
           <div className={styles["prev-next-group"]}>
             <button
