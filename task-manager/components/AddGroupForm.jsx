@@ -10,6 +10,8 @@ export default function AddGroupForm({ onSubmit }) {
   const handleSubmit = () => {
     if (name.length === 0) {
       alert("Name cannot be empty.");
+    } else if (name.includes("'") || name.includes("\"")) {
+      alert("Forbidden character.");
     } else {
       onSubmit(name);
     }

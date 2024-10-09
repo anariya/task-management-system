@@ -8,6 +8,10 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            if (username.includes("'") || username.includes("\"")) {
+                alert("Forbidden character.");
+                return;
+            }
             const res = await fetch('/api/auth/signup', {
                 method: 'POST',
                 headers: {
