@@ -20,7 +20,8 @@ router.post(async (req, res) => {
     const token = await oauth2Client.getToken(code);
     res.json(token);
   } catch (error) {
-    console.log(`oauth token error ${error.response?.data || error.message}`);
+    const detailedError = error.response?.data || error.message || error;
+    console.error(`OAuth token error: ${JSON.stringify(detailedError, null, 2)}`);
     res.status(500).json({error: `failed`});
   }
 });
