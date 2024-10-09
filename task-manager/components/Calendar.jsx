@@ -612,8 +612,8 @@ const Calendar = ({ groupID }) => {
   const onGcalSuccess = (res) => {
     console.log("success");
     console.log(res);
-    const { code } = res;
-    getGcalTokens(code);
+    const { credential } = res;
+    getGcalTokens(credential);
   };
 
   const getGcalTokens = async (code) => {
