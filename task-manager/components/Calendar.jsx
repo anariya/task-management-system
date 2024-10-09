@@ -612,8 +612,8 @@ const Calendar = ({ groupID }) => {
   const onGcalSuccess = (res) => {
     console.log("success");
     console.log(res);
-    const { credential } = res;
-    getGcalTokens(credential);
+    const { code } = res;
+    getGcalTokens(code);
   };
 
   const getGcalTokens = async (code) => {
@@ -731,6 +731,7 @@ const Calendar = ({ groupID }) => {
               cookiePolicy={"single-host-origin"}
               responseType="code"
               accessType="offline"
+              flow="auth-code"
               scope="openid email profile https://www.googleapis.com/auth/calendar"
             />
           </GoogleOAuthProvider>
