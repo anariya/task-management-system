@@ -43,14 +43,16 @@ const syncEvents = async (calendar, events, groupId) => {
   });
 
   // delete all currently existing events in calendar for this group
-  const ids = listRes.items.map(item => item.id);
+  if (items.length !== 0) {
+    const ids = listRes.items.map(item => item.id);
 
-  await ids.forEach(async id => {
-    await calendar.events.delete({
-      calendarId: "primary",
-      eventId: id
-    })
-  });
+    await ids.forEach(async id => {
+      await calendar.events.delete({
+        calendarId: "primary",
+        eventId: id
+      })
+    });
+  }
 
   // convert all new events to add to google calendar format
   const eventsToAdd = events.map(event => {
