@@ -43,7 +43,7 @@ const syncEvents = async (calendar, events, groupId) => {
   });
 
   // delete all currently existing events in calendar for this group
-  if (items && items.length !== 0) {
+  if (listRes.items && listRes.items.length !== 0) {
     const ids = listRes.items.map(item => item.id);
 
     await ids.forEach(async id => {
