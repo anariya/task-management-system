@@ -626,8 +626,8 @@ const Calendar = ({ groupID }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        code: code
-      })
+        code: code,
+      }),
     });
     const data = await res.json();
     console.log(data);
@@ -720,9 +720,7 @@ const Calendar = ({ groupID }) => {
         </div>
 
         <div className={styles["calendar-controls"]}>
-          <GoogleOAuthProvider clientId="350480669789-ihtcgbfgtj619sgc5vna4nrt33ptq3ta.apps.googleusercontent.com">
-            <button onClick={handleGcalLogin}>Authorise Google Calendar</button>
-          </GoogleOAuthProvider>
+          <button onClick={handleGcalLogin}>Authorise Google Calendar</button>
           <div className={styles["prev-next-group"]}>
             <button
               className={styles["prev-next-button"]}
