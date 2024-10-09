@@ -16,6 +16,7 @@ const router = createRouter();
 router.post(async (req, res) => {
   try {
     const { code } = req.body;
+    console.log(`got code ${code}`);
     const token = await oauth2Client.getToken(code);
     res.json(token);
   } catch (error) {
